@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parcial-aks-deployment
+  labels:
+    app: parcial-aks
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: parcial-aks
+  template:
+    metadata:
+      labels:
+        app: parcial-aks
+    spec:
+      containers:
+      - name: parcial-aks
+        image: fabioramos97/parcial-aks
+        ports:
+        - containerPort: 8080
