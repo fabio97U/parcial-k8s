@@ -16,6 +16,16 @@ spec:
     spec:
       containers:
       - name: parcial-aks
-        image: fabioramos97/parcial-aks
+        image: fabioramos97/xampp-parcial-k8s
         ports:
-        - containerPort: 8080
+        - containerPort: 22
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/www
+          name: webapp-claim0
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: webapp-claim0
+        persistentVolumeClaim:
+          claimName: webapp-claim0
